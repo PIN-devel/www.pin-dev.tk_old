@@ -8,8 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  NavbarText
+  NavLink
 } from 'reactstrap';
 
 const Header = ({ siteTitle }) => {
@@ -32,7 +31,7 @@ const Header = ({ siteTitle }) => {
                 <NavLink href="/about/">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Portfolio</NavLink>
+                <NavLink href="https://secure-woodland-91354.herokuapp.com/">Portfolio</NavLink>
               </NavItem>            
             </Nav>
           </Collapse>
