@@ -10,37 +10,27 @@
  const SinglePost = ({data}) => {
      const post = data.markdownRemark.frontmatter
      return(
-         <Layout>
+         <Layout pageTitle={post.title}>
             <SEO title={post.title}/>
-            <h1>{post.title}</h1>
-            <Row>
-                <Col md="8">
-                    <Card>
-                        <Img className="card-img-top" fluid={post.image.childImageSharp.fluid}/>
-                        <CardBody>
-                            <CardSubtitle>
-                                <span className="text-info">{post.date}</span> by{' '}
-                                <span className="text-info">{post.author}</span>                                
-                            </CardSubtitle>
-                            <div dangerouslySetInnerHTML={{ __html:data.markdownRemark.html }}/>
-                            <ul className="post-tags">
-                                {post.tags.map(tag =>(
-                                    <li key={tag}>
-                                        <Link to={`/tag/${slugify(tag)}`}>
-                                            <Badge color="Primary">{tag}</Badge>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col md="4">
-                    <Sidebar/>
-                </Col>
-
-            </Row>
+                <Card>
+                    <Img className="card-img-top" fluid={post.image.childImageSharp.fluid}/>
+                    <CardBody>
+                        <CardSubtitle>
+                            <span className="text-info">{post.date}</span> by{' '}
+                            <span className="text-info">{post.author}</span>                                
+                        </CardSubtitle>
+                        <div dangerouslySetInnerHTML={{ __html:data.markdownRemark.html }}/>
+                        <ul className="post-tags">
+                            {post.tags.map(tag =>(
+                                <li key={tag}>
+                                    <Link to={`/tag/${slugify(tag)}`}>
+                                        <Badge color="Primary">{tag}</Badge>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardBody>
+                </Card>
          </Layout>
      )
 
