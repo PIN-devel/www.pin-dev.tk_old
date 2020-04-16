@@ -2,7 +2,6 @@
 title: 'Second Post - Django'
 date: 2020-04-15 22:00:00
 author: 'Innam Park'
-path: '/second-post'
 image: ../../images/django.jpg
 tags:
   - python

@@ -2,7 +2,6 @@
 title: 'First Post - Play Guitar'
 date: 2020-04-15 21:00:00
 author: 'Innam Park'
-path: '/first-post'
 image: ../../images/nodejs.jpg
 tags:
   - nodejs

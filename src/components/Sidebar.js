@@ -1,10 +1,25 @@
 import React from 'react'
-import { Card, CardTitle, CardBody, Form, FormGroup, Input} from 'reactstrap'
+import { Card, CardTitle, CardBody, CardText, Form, FormGroup, Input} from 'reactstrap'
 import { graphql, StaticQuery, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import profile from '../images/profile.jpg'
+
 
 const Sidebar = () => (
     <div>
+        
+        <Card>
+            <CardBody>
+                <CardTitle className="text-center text-uppercase mb-3">
+                    Profile
+                </CardTitle>
+                <img src={profile} style={{width:'100%',borderRadius: '5%'}} alt="profile"/>
+                <CardTitle className="text-center mb-0">
+                    PIN
+                </CardTitle>
+                <CardText className="text-center">pin954562@gmail.com</CardText>
+            </CardBody>
+        </Card>
         <Card>
             <CardBody>
                 <CardTitle className="text-center text-uppercase mb-3">
@@ -27,30 +42,18 @@ const Sidebar = () => (
         <Card>
             <CardBody>
                 <CardTitle className="text-center text-uppercase mb-3">
-                    temp
-                </CardTitle>
-                <img 
-                    src="https://source.unsplash.com/random/320x200" 
-                    alt="random" 
-                    style={{ width: '100%' }}
-                />
-            </CardBody>
-        </Card>
-        <Card>
-            <CardBody>
-                <CardTitle className="text-center text-uppercase mb-3">
                     Recent Posts
                 </CardTitle>
                 <StaticQuery query={sidebarQuery} render={(data) => (
                     <div>
                         {data.allMarkdownRemark.edges.map(({node}) => (
                             <Card key={node.id}>
-                                <Link to={node.frontmatter.path}>
+                                <Link to={node.fields.slug}>
                                     <Img className="card-img-top" fluid={node.frontmatter.image.childImageSharp.fluid}/>
                                 </Link>
                                 <CardBody>
                                     <CardTitle>
-                                        <Link to={node.frontmatter.path}>
+                                        <Link to={node.fields.slug}>
                                             {node.frontmatter.title}
                                         </Link>
                                     </CardTitle>
@@ -65,7 +68,7 @@ const Sidebar = () => (
 )
 
 const sidebarQuery = graphql`
-    query sidebarQuery {
+    query sidebarQuery{
         allMarkdownRemark(
             sort: {fields: [frontmatter___date],order: DESC}
             limit: 3
@@ -75,7 +78,6 @@ const sidebarQuery = graphql`
                     id
                     frontmatter{
                         title
-                        path
                         image{
                             childImageSharp{
                                 fluid(maxWidth:300){
@@ -83,6 +85,9 @@ const sidebarQuery = graphql`
                                 }
                             }
                         }
+                    }
+                    fields{
+                        slug
                     }
                 }
             }
