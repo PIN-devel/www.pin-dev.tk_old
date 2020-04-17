@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-pages-tags-js","path":"/tags/","result":{"pageContext":{}}}
+{"componentChunkName":"component---src-templates-tags-page-js","path":"/tags","result":{"pageContext":{"tags":["nodejs","python","django","gatsby"],"tagPostCounts":{"nodejs":1,"python":2,"django":1,"gatsby":1}}}}
